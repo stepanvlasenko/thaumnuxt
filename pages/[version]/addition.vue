@@ -16,46 +16,51 @@
         <div class="container">
             <div>
                 <h2>Первая эссенция</h2>
-                <EssentiasTC6List @chosen-essentia="changeFirstEssentia"></EssentiasTC6List>
+                <EssentiasList :essentias="essentias" @essentia-click="changeFirstEssentia"></EssentiasList>
             </div>
             <div>
                 <h2>Вторая эссенция</h2>
-                <EssentiasTC6List @chosen-essentia="changeSecondEssentia"></EssentiasTC6List>
+                <EssentiasList :essentias="essentias" @essentia-click="changeSecondEssentia"></EssentiasList>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-    
+    import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
     import { useEssentiasStore } from '~~/store/essentias';
 
-    const essentias = useEssentiasStore().essentiasTC6
-    const recipes = useRecipesStore().recipes
+    const essentiasStore = storeToRefs(useEssentiasStore())
+    const recipesStore = storeToRefs(useRecipesStore())
+    const version = computed(() => useRoute().params.version)
 
-    const firstEssentia = ref(essentias[0])
-    const secondEssentia = ref(essentias[0])
-    const resultEssentia = ref(essentias[0])
+    const essentias = computed(() => {
+        return essentiasStore.essentias.value.filter((e) => e.version.includes(version.value))
+    })
 
+    const firstEssentia = ref(essentiasStore.backEssentia)
+    const secondEssentia = ref(essentiasStore.backEssentia)
+    const resultEssentia = ref(essentiasStore.backEssentia)
 
     const changeFirstEssentia = (essentia) => {
-        firstEssentia.value = essentia
-        additionEssentia(firstEssentia.value, secondEssentia.value)
+        console.log(essentia)
+        // firstEssentia.value = essentia
+        // additionEssentia(firstEssentia.value, secondEssentia.value)
     }
     const changeSecondEssentia = (essentia) => {
         secondEssentia.value = essentia
-        additionEssentia(firstEssentia.value, secondEssentia.value)
+        // additionEssentia(firstEssentia.value, secondEssentia.value)
     }
 
     const additionEssentia = (part1, part2) => {
         
-        const recipe = recipes.find((recipe) => {
-            return (recipe.part1 === part1.name && recipe.part2 === part2.name) ||
-            (recipe.part1 === part2.name && recipe.part2 === part1.name)
-        }) || recipes[0]
+        const recipe = recipesStore.recipes.value.find((recipe) => {
+            return (recipe[version.value].part1 === part1.name && recipe[version.value].part2 === part2.name) ||
+            (recipe[version.value].part1 === part2.name && recipe[version.value].part2 === part1.name)
+        }) || recipesStore.backRecipe
 
-        resultEssentia.value = essentias.find((essentia) => essentia.name === recipe.result)
+        resultEssentia.value = essentias.value.find((essentia) => essentia.name === recipe.result)
     }
 </script>
 
