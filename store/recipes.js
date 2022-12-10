@@ -5,196 +5,505 @@ export const useRecipesStore = defineStore('recipes', () => {
     const recipes = ref([
         {
             "result": "back",
-            "part1": "back",
-            "part2": "back"
+            "v4": {
+                
+            },
+            "v6": {
+                "part1": "back",
+                "part2": "back"
+            },
         },
         {
             "result": "aer",
-            "part1": "aer",
-            "part2": "aer"
+            "v4": {
+                "part1": "aer",
+                "part2": "aer"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "aer"
+            },
         },
         {
             "result": "alienis",
-            "part1": "vacuos",
-            "part2": "tenebrae"
+            "v4": {
+                "part1": "vacuos",
+                "part2": "tenebrae"
+            },
+            "v6": {
+                "part1": "vacuos",
+                "part2": "tenebrae"
+            },
         },
         {
             "result": "alkimia",
-            "part1": "praecantatio",
-            "part2": "aqua"
+            "v4": {
+                
+            },
+            "v6": {
+                "part1": "praecantatio",
+                "part2": "aqua"
+            },
         },
         {
             "result": "aqua",
-            "part1": "aqua",
-            "part2": "aqua"
+            "v4": {
+                "part1": "aqua",
+                "part2": "aqua"
+            },
+            "v6": {
+                "part1": "aqua",
+                "part2": "aqua"
+            },
+        },
+        {
+            "result": "arbor",
+            "v4": {
+                "part1": "aer",
+                "part2": "herba"
+            },
         },
         {
             "result": "auram",
-            "part1": "praecantatio",
-            "part2": "aer"
+            "v4": {
+                "part1": "praecantatio",
+                "part2": "aer"
+            },
+            "v6": {
+                "part1": "praecantatio",
+                "part2": "aer"
+            },
         },
         {
             "result": "aversio",
-            "part1": "spiritus",
-            "part2": "perditio"
+            "v4": {
+                "part1": "instrumentum",
+                "part2": "ignis"
+            },
+            "v6": {
+                "part1": "spiritus",
+                "part2": "perditio"
+            },
         },
         {
             "result": "bestia",
-            "part1": "motus",
-            "part2": "victus"
+            "v4": {
+                "part1": "motus",
+                "part2": "victus"  
+            },
+            "v6": {
+                "part1": "motus",
+                "part2": "victus"  
+            },
         },
         {
             "result": "cognitio",
-            "part1": "ignis",
-            "part2": "spiritus"
+            "v4": {
+                "part1": "ignis",
+                "part2": "spiritus"
+            },
+            "v6": {
+                "part1": "ignis",
+                "part2": "spiritus"
+            },
+        },
+        {
+            "result": "corpus",
+            "v4": {
+                "part1": "bestia",
+                "part2": "mortuus"
+            },
         },
         {
             "result": "desederium",
-            "part1": "spiritus",
-            "part2": "vacuos"
+            "v4": {
+                "part1": "fames",
+                "part2": "humanus"
+            },
+            "v6": {
+                "part1": "spiritus",
+                "part2": "vacuos"
+            },
         },
         {
             "result": "exanimis",
-            "part1": "motus",
-            "part2": "mortuus"
+            "v4": {
+                "part1": "motus",
+                "part2": "mortuus"
+            },
+            "v6": {
+                "part1": "motus",
+                "part2": "mortuus"
+            },
         },
         {
             "result": "fabrico",
-            "part1": "permutatio",
-            "part2": "instrumentum"
+            "v4": {
+                "part1": "humanus",
+                "part2": "instrumentum" 
+            },
+            "v6": {
+                "part1": "permutatio",
+                "part2": "instrumentum" 
+            },
+        },
+        {
+            "result": "fames",
+            "v4": {
+                "part1": "vacuos",
+                "part2": "victus"
+            },
         },
         {
             "result": "gelum",
-            "part1": "ignis",
-            "part2": "perditio"
+            "v4": {
+                "part1": "ignis",
+                "part2": "perditio"  
+            },
+            "v6": {
+                "part1": "ignis",
+                "part2": "perditio"  
+            },
         },
         {
             "result": "herba",
-            "part1": "victus",
-            "part2": "terra"
+            "v4": {
+                "part1": "victus",
+                "part2": "terra"
+            },
+            "v6": {
+                "part1": "victus",
+                "part2": "terra"
+            },
         },
         {
             "result": "humanus",
-            "part1": "spiritus",
-            "part2": "victus"
+            "v4": {
+                "part1": "bestia",
+                "part2": "cognitio"
+            },
+            "v6": {
+                "part1": "spiritus",
+                "part2": "victus"
+            },
         },
         {
             "result": "ignis",
-            "part1": "ignis",
-            "part2": "ignis"
+            "v4": {
+                "part1": "ignis",
+                "part2": "ignis"
+            },
+            "v6": {
+                "part1": "ignis",
+                "part2": "ignis"
+            },
         },
         {
             "result": "instrumentum",
-            "part1": "metallum",
-            "part2": "potentia"
+            "v4": {
+                "part1": "humanus",
+                "part2": "ordo"
+            },
+            "v6": {
+                "part1": "metallum",
+                "part2": "potentia"
+            },
+        },
+        {
+            "result": "iter",
+            "v4": {
+                "part1": "motus",
+                "part2": "terra"
+            },
+        },
+        {
+            "result": "limus",
+            "v4": {
+                "part1": "aqua",
+                "part2": "victus"
+            },
         },
         {
             "result": "lux",
-            "part1": "aer",
-            "part2": "ignis"
+            "v4": {
+                "part1": "aer",
+                "part2": "ignis"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "ignis"
+            },
         },
         {
             "result": "machina",
-            "part1": "motus",
-            "part2": "instrumentum"
+            "v4": {
+                "part1": "motus",
+                "part2": "instrumentum"
+            },
+            "v6": {
+                "part1": "motus",
+                "part2": "instrumentum"
+            },
+        },
+        {
+            "result": "messis",
+            "v4": {
+                "part1": "herba",
+                "part2": "humanus"
+            },
         },
         {
             "result": "metallum",
-            "part1": "terra",
-            "part2": "ordo"
+            "v4": {
+                "part1": "terra",
+                "part2": "vitreus"
+            },
+            "v6": {
+                "part1": "terra",
+                "part2": "ordo"
+            },
+        },
+        {
+            "result": "meto",
+            "v4": {
+                "part1": "instrumentum",
+                "part2": "messis"
+            },
         },
         {
             "result": "mortuus",
-            "part1": "victus",
-            "part2": "perditio"
+            "v4": {
+                "part1": "victus",
+                "part2": "perditio"
+            },
+            "v6": {
+                "part1": "victus",
+                "part2": "perditio"
+            },
         },
         {
             "result": "motus",
-            "part1": "aer",
-            "part2": "ordo"
+            "v4": {
+                "part1": "aer",
+                "part2": "ordo"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "ordo"
+            },
         },
         {
             "result": "ordo",
-            "part1": "ordo",
-            "part2": "ordo"
+            "v4": {
+                "part1": "ordo",
+                "part2": "ordo"
+            },
+            "v6": {
+                "part1": "ordo",
+                "part2": "ordo"
+            },
+        },
+        {
+            "result": "pannus",
+            "v4": {
+                "part1": "bestia",
+                "part2": "instrumentum"
+            },
         },
         {
             "result": "perditio",
-            "part1": "perditio",
-            "part2": "perditio"
+            "v4": {
+                "part1": "perditio",
+                "part2": "perditio"
+            },
+            "v6": {
+                "part1": "perditio",
+                "part2": "perditio"
+            },
+        },
+        {
+            "result": "perfodio",
+            "v4": {
+                "part1": "humanus",
+                "part2": "terra"
+            },
         },
         {
             "result": "permutatio",
-            "part1": "perditio",
-            "part2": "ordo"
+            "v4": {
+                "part1": "perditio",
+                "part2": "ordo"
+            },
+            "v6": {
+                "part1": "perditio",
+                "part2": "ordo" 
+            },
         },
         {
             "result": "potentia",
-            "part1": "ordo",
-            "part2": "ignis"
+            "v4": {
+                "part1": "ordo",
+                "part2": "ignis" 
+            },
+            "v6": {
+                "part1": "ordo",
+                "part2": "ignis" 
+            },
         },
         {
             "result": "praecantatio",
-            "part1": "potentia",
-            "part2": "aer"
+            "v4": {
+                "part1": "potentia",
+                "part2": "vacuos"
+            },
+            "v6": {
+                "part1": "potentia",
+                "part2": "aer"
+            },
         },
         {
             "result": "praemunio",
-            "part1": "spiritus",
-            "part2": "terra"
+            "v4": {
+                "part1": "instrumentum",
+                "part2": "terra"
+            },
+            "v6": {
+                "part1": "spiritus",
+                "part2": "terra"
+            },
+        },
+        {
+            "result": "sano",
+            "v4": {
+                "part1": "ordo",
+                "part2": "victus"
+            },
         },
         {
             "result": "sensus",
-            "part1": "aer",
-            "part2": "spiritus"
+            "v4": {
+                "part1": "aer",
+                "part2": "spiritus"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "spiritus"
+            },
         },
         {
             "result": "spiritus",
-            "part1": "victus",
-            "part2": "mortuus"
+            "v4": {
+                "part1": "victus",
+                "part2": "mortuus" 
+            },
+            "v6": {
+                "part1": "victus",
+                "part2": "mortuus" 
+            },
         },
         {
             "result": "tenebrae",
-            "part1": "vacuos",
-            "part2": "lux"
+            "v4": {
+                "part1": "vacuos",
+                "part2": "lux"
+            },
+            "v6": {
+                "part1": "vacuos",
+                "part2": "lux"
+            },
+        },
+        {
+            "result": "tempestas",
+            "v4": {
+                "part1": "aer",
+                "part2": "aqua"
+            },
         },
         {
             "result": "terra",
-            "part1": "terra",
-            "part2": "terra"
+            "v4": {
+                "part1": "terra",
+                "part2": "terra"  
+            },
+            "v6": {
+                "part1": "terra",
+                "part2": "terra"  
+            },
         },
         {
             "result": "vacuos",
-            "part1": "aer",
-            "part2": "perditio"
+            "v4": {
+                "part1": "aer",
+                "part2": "perditio"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "perditio"
+            },
+        },
+        {
+            "result": "venenum",
+            "v4": {
+                "part1": "aqua",
+                "part2": "perditio"
+            },
         },
         {
             "result": "victus",
-            "part1": "terra",
-            "part2": "aqua"
+            "v4": {
+                "part1": "terra",
+                "part2": "aqua"
+            },
+            "v6": {
+                "part1": "terra",
+                "part2": "aqua"
+            },
         },
         {
             "result": "vinculum",
-            "part1": "motus",
-            "part2": "perditio"
+            "v4": {
+                "part1": "motus",
+                "part2": "perditio"
+            },
+            "v6": {
+                "part1": "motus",
+                "part2": "perditio"
+            },
         },
         {
             "result": "vitium",
-            "part1": "perditio",
-            "part2": "praecantatio"
+            "v4": {
+                "part1": "perditio",
+                "part2": "praecantatio"
+            },
+            "v6": {
+                "part1": "perditio",
+                "part2": "praecantatio"
+            },
         },
         {
             "result": "vitreus",
-            "part1": "terra",
-            "part2": "aer"
+            "v4": {
+                "part1": "terra",
+                "part2": "ordo"
+            },
+            "v6": {
+                "part1": "terra",
+                "part2": "aer"
+            },
         },
         {
             "result": "volatus",
-            "part1": "aer",
-            "part2": "motus"
+            "v4": {
+                "part1": "aer",
+                "part2": "motus"
+            },
+            "v6": {
+                "part1": "aer",
+                "part2": "motus"
+            },
         }
     ])
-
     return {
         recipes
     }

@@ -154,6 +154,11 @@ export const useEssentiasStore = defineStore('essentias', () => {
             "src": "/images/essentia/ordo.svg"
         },
         {
+            "name": "pannus",
+            "version": ["tc4"],
+            "src": "/images/essentia/pannus.svg"
+        },
+        {
             "name": "perditio",
             "version": ["tc4", "tc6"],
             "src": "/images/essentia/perditio.svg"
