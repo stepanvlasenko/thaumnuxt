@@ -16,7 +16,10 @@
         <div class="container">
             <div>
                 <h2>Первая эссенция</h2>
-                <EssentiasList :essentias="essentias" @essentia-click="changeFirstEssentia"></EssentiasList>
+                <EssentiasList
+                    :essentias="essentias"
+                    @essentia-click="changeFirstEssentia"
+                />
             </div>
             <div>
                 <h2>Вторая эссенция</h2>
@@ -35,17 +38,16 @@
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = computed(() => {
-        return essentiasStore.essentias.value.filter((e) => e.version.includes(version.value))
-    })
+    const essentias = ref(essentiasStore.essentias.value
+        .filter((e) => e.version.includes(version.value))
+    )
 
-    const firstEssentia = ref(essentiasStore.backEssentia)
-    const secondEssentia = ref(essentiasStore.backEssentia)
-    const resultEssentia = ref(essentiasStore.backEssentia)
+    const firstEssentia = ref(essentiasStore.backEssentia.value)
+    const secondEssentia = ref(essentiasStore.backEssentia.value)
+    const resultEssentia = ref(essentiasStore.backEssentia.value)
 
     const changeFirstEssentia = (essentia) => {
-        console.log(essentia)
-        // firstEssentia.value = essentia
+        firstEssentia.value = essentia
         // additionEssentia(firstEssentia.value, secondEssentia.value)
     }
     const changeSecondEssentia = (essentia) => {
