@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { EssenceRecipe } from '@types'
+import { EssenceName, EssenceRecipe } from '@types'
 
 export const useRecipesStore = defineStore('recipes', () => {
     /**
@@ -506,15 +506,18 @@ export const useRecipesStore = defineStore('recipes', () => {
         }
     ])
 
+    const recipesMap = computed<Map<EssenceName, EssenceRecipe>>(() => {
+        return new Map(recipes.value.map(r => [r.result, r]))
+    })
+
     /**
      * Recipe for back essence
      */
-    const backRecipe = computed(() => {
-        return recipes.value.find(r => r.result === 'back')
-    })
+    const backRecipe = computed(() => recipesMap.value.get('back'))
 
     return {
         recipes,
+        recipesMap,
         backRecipe,
     }
 })
