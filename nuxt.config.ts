@@ -1,7 +1,12 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path'
+
 export default defineNuxtConfig({
     modules: [
-            '@vueuse/nuxt',
-            '@pinia/nuxt',
-        ],
+        '@vueuse/nuxt',
+        '@pinia/nuxt',
+    ],
+
+    alias: {
+        '@types': path.join(__dirname, 'assets', 'ts', 'types.ts'),
+    }
 })

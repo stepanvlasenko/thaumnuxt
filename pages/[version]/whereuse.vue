@@ -6,12 +6,12 @@
         Это полезно в алхимической центрифуге.</p>
 
         <div class="function">
-            <img :src="chosenEssentia.src">
+            <img :src="chosenEssentia.image">
             <img src="/images/arrow.svg">
-            <img 
+            <img
                 v-for="essentia of containers"
                 :key="essentia.name"
-                :src="essentia.src"
+                :src="essentia.image"
                 :class='"img-choose"'>
         </div>
         <EssentiasList
@@ -24,34 +24,34 @@
 <script setup>
     import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
-    import { useEssentiasStore } from '~~/store/essentias';
+    import { useEssencesStore } from '@/store/essences';
 
-    const essentiasStore = storeToRefs(useEssentiasStore())
+    const essenceStore = storeToRefs(useEssencesStore())
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essentias.value
+    const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value)))
 
-    const chosenEssentia = ref(essentiasStore.backEssentia.value)
+    const chosenEssentia = ref(essenceStore.backEssence.value)
 
     const containers = computed(() =>{
         const _containers = []
         const chosenEssentiaName = chosenEssentia.value.name
-        
+
         const recipesWhereuse = recipesStore.recipes.value.filter((recipe) => {
             if (!Object.keys(recipe).includes(version.value)) { return }
 
-            return ((chosenEssentiaName === recipe[version.value].part1 ||
-                chosenEssentiaName === recipe[version.value].part2) &&
-                recipe[version.value].part1 !== recipe[version.value].part2)
+            return ((chosenEssentiaName === recipe[version.value].firstEssence ||
+                chosenEssentiaName === recipe[version.value].secondEssence) &&
+                recipe[version.value].firstEssence !== recipe[version.value].secondEssence)
         })
 
         recipesWhereuse.forEach((r) => {
-            _containers.push(essentiasStore.essentias.value.find((e) => e.name === r.result))
+            _containers.push(essenceStore.essences.value.find((e) => e.name === r.result))
         })
-        
-        return _containers.length ? _containers : [essentiasStore.backEssentia.value]
+
+        return _containers.length ? _containers : [essenceStore.backEssence.value]
     })
 
     const changeEssentia = (essentia) => {

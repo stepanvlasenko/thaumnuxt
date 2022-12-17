@@ -3,7 +3,7 @@
         <img
             v-for="essentia of essentias"
             :key="essentia.name"
-            :src="essentia.src"
+            :src="essentia.image"
             :class='"img-choose"'
             @click="handleClick(essentia)"
         >

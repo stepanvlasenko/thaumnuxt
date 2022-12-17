@@ -6,13 +6,13 @@
         или же они несовместимимы.</p>
 
         <div class="function">
-            <img :src="firstEssentia.src">  
+            <img :src="firstEssentia.image">
             <img src="/images/plus.svg">
-            <img :src="secondEssentia.src">  
+            <img :src="secondEssentia.image">
             <img src="/images/arrow.svg">
-            <img :src="resultEssentia.src" alt="">
+            <img :src="resultEssentia.image" alt="">
         </div>
-        
+
         <div class="container">
             <div>
                 <h2>Первая эссенция</h2>
@@ -34,19 +34,19 @@
 <script setup>
     import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
-    import { useEssentiasStore } from '~~/store/essentias';
+    import { useEssencesStore } from '~~/store/essences';
 
-    const essentiasStore = storeToRefs(useEssentiasStore())
+    const essenceStore = storeToRefs(useEssencesStore())
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essentias.value
+    const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value))
     )
 
-    const firstEssentia = ref(essentiasStore.backEssentia.value)
-    const secondEssentia = ref(essentiasStore.backEssentia.value)
-    const resultEssentia = ref(essentiasStore.backEssentia.value)
+    const firstEssentia = ref(essenceStore.backEssence.value)
+    const secondEssentia = ref(essenceStore.backEssence.value)
+    const resultEssentia = ref(essenceStore.backEssence.value)
 
     const changeFirstEssentia = (essentia) => {
         firstEssentia.value = essentia
@@ -57,12 +57,12 @@
         additionEssentia(firstEssentia.value, secondEssentia.value)
     }
 
-    const additionEssentia = (part1, part2) => {
+    const additionEssentia = (firstEssence, part2) => {
         const recipe = recipesStore.recipes.value.find((recipe) => {
             if (!Object.keys(recipe).includes(version.value)) { return }
 
-            return (recipe[version.value].part1 === part1.name && recipe[version.value].part2 === part2.name) ||
-            (recipe[version.value].part1 === part2.name && recipe[version.value].part2 === part1.name)
+            return (recipe[version.value].firstEssence === firstEssence.name && recipe[version.value].part2 === part2.name) ||
+            (recipe[version.value].firstEssence === part2.name && recipe[version.value].part2 === firstEssence.name)
         }) || recipesStore.backRecipe.value
 
         resultEssentia.value = essentias.value.find((essentia) => essentia.name === recipe.result)

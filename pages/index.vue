@@ -21,12 +21,6 @@
     </div>
 </template>
 
-<script setup>
-import { useEssentiasStore } from '~~/store/essentias';
-import { useRecipesStore } from '~~/store/recipes';
-
-</script>
-
 <style scoped>
     .info__container {
         width: 100%;
