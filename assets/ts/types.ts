@@ -25,4 +25,6 @@ interface IThaumcraftVersionRecipe {
  */
 export type EssenceRecipe = {
     [key in Partial<ThaumcraftVersion>]?: IThaumcraftVersionRecipe;
+} & {
+    result: string;
 }
