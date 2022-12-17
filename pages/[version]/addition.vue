@@ -6,13 +6,13 @@
         или же они несовместимимы.</p>
 
         <div class="function">
-            <img :src="firstEssentia.src">  
+            <img :src="firstEssentia.image">
             <img src="/images/plus.svg">
-            <img :src="secondEssentia.src">  
+            <img :src="secondEssentia.image">
             <img src="/images/arrow.svg">
-            <img :src="resultEssentia.src" alt="">
+            <img :src="resultEssentia.image" alt="">
         </div>
-        
+
         <div class="container">
             <div>
                 <h2>Первая эссенция</h2>
@@ -40,7 +40,7 @@
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essentias.value
+    const essentias = ref(essentiasStore.essences.value
         .filter((e) => e.version.includes(version.value))
     )
 

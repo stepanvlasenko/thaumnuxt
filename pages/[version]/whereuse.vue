@@ -6,12 +6,12 @@
         Это полезно в алхимической центрифуге.</p>
 
         <div class="function">
-            <img :src="chosenEssentia.src">
+            <img :src="chosenEssentia.image">
             <img src="/images/arrow.svg">
-            <img 
+            <img
                 v-for="essentia of containers"
                 :key="essentia.name"
-                :src="essentia.src"
+                :src="essentia.image"
                 :class='"img-choose"'>
         </div>
         <EssentiasList
@@ -38,7 +38,7 @@
     const containers = computed(() =>{
         const _containers = []
         const chosenEssentiaName = chosenEssentia.value.name
-        
+
         const recipesWhereuse = recipesStore.recipes.value.filter((recipe) => {
             if (!Object.keys(recipe).includes(version.value)) { return }
 
@@ -50,7 +50,7 @@
         recipesWhereuse.forEach((r) => {
             _containers.push(essentiasStore.essentias.value.find((e) => e.name === r.result))
         })
-        
+
         return _containers.length ? _containers : [essentiasStore.backEssentia.value]
     })
 

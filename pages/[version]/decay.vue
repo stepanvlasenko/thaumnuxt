@@ -6,15 +6,15 @@
         в алхимической центрифуге.</p>
 
         <div class="function">
-            <img :src="chosenEssentia.src">
+            <img :src="chosenEssentia.image">
             <img src="/images/arrow.svg">
             <img class="pointer"
                 @click="changeEssentia(part1Essentia)"
-                :src="part1Essentia.src">
+                :src="part1Essentia.image">
             <img src="/images/plus.svg">
             <img class="pointer"
                 @click="changeEssentia(part2Essentia)"
-                :src="part2Essentia.src">
+                :src="part2Essentia.image">
         </div>
         <EssentiasList
         :essentias="essentias"
@@ -32,7 +32,7 @@
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essentias.value
+    const essentias = ref(essentiasStore.essences.value
         .filter((e) => e.version.includes(version.value)))
 
     const chosenEssentia = ref(essentiasStore.backEssentia.value)
@@ -45,7 +45,7 @@
     }
     const changeParts = (essentia) => {
         const recipe = recipesStore.recipes.value.find((recipe) => recipe.result === essentia.name)[version.value]
-            || recipesStore.backRecipe.value 
+            || recipesStore.backRecipe.value
 
         part1Essentia.value = essentias.value.find((essentia) => recipe.part1 === essentia.name)
         part2Essentia.value = essentias.value.find((essentia) => recipe.part2 === essentia.name)
