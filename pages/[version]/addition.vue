@@ -23,7 +23,9 @@
             </div>
             <div>
                 <h2>Вторая эссенция</h2>
-                <EssentiasList :essentias="essentias" @essentia-click="changeSecondEssentia"></EssentiasList>
+                <EssentiasList
+                    :essentias="essentias"
+                    @essentia-click="changeSecondEssentia"></EssentiasList>
             </div>
         </div>
     </div>
@@ -48,19 +50,20 @@
 
     const changeFirstEssentia = (essentia) => {
         firstEssentia.value = essentia
-        // additionEssentia(firstEssentia.value, secondEssentia.value)
+        additionEssentia(firstEssentia.value, secondEssentia.value)
     }
     const changeSecondEssentia = (essentia) => {
         secondEssentia.value = essentia
-        // additionEssentia(firstEssentia.value, secondEssentia.value)
+        additionEssentia(firstEssentia.value, secondEssentia.value)
     }
 
     const additionEssentia = (part1, part2) => {
-        
         const recipe = recipesStore.recipes.value.find((recipe) => {
+            if (!Object.keys(recipe).includes(version.value)) { return }
+
             return (recipe[version.value].part1 === part1.name && recipe[version.value].part2 === part2.name) ||
             (recipe[version.value].part1 === part2.name && recipe[version.value].part2 === part1.name)
-        }) || recipesStore.backRecipe
+        }) || recipesStore.backRecipe.value
 
         resultEssentia.value = essentias.value.find((essentia) => essentia.name === recipe.result)
     }

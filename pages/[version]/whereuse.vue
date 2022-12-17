@@ -8,37 +8,54 @@
         <div class="function">
             <img :src="chosenEssentia.src">
             <img src="/images/arrow.svg">
-            <img v-for="essentia of containers" :key="essentia.name" :src="essentia.src" :class='"img-choose"'>
+            <img 
+                v-for="essentia of containers"
+                :key="essentia.name"
+                :src="essentia.src"
+                :class='"img-choose"'>
         </div>
-        <EssentiasTC6List @chosen-essentia="changeEssentia"></EssentiasTC6List>
+        <EssentiasList
+            :essentias="essentias"
+            @essentia-click="changeEssentia">
+        </EssentiasList>
     </div>
 </template>
 
 <script setup>
+    import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
     import { useEssentiasStore } from '~~/store/essentias';
 
-    const essentias = useEssentiasStore().essentiasTC6
-    const recipes = useRecipesStore().recipes
+    const essentiasStore = storeToRefs(useEssentiasStore())
+    const recipesStore = storeToRefs(useRecipesStore())
+    const version = computed(() => useRoute().params.version)
 
-    const chosenEssentia = ref(essentias[0])
-    const containers = ref([])
+    const essentias = ref(essentiasStore.essentias.value
+        .filter((e) => e.version.includes(version.value)))
+
+    const chosenEssentia = ref(essentiasStore.backEssentia.value)
+
+    const containers = computed(() =>{
+        const _containers = []
+        const chosenEssentiaName = chosenEssentia.value.name
+        
+        const recipesWhereuse = recipesStore.recipes.value.filter((recipe) => {
+            if (!Object.keys(recipe).includes(version.value)) { return }
+
+            return ((chosenEssentiaName === recipe[version.value].part1 ||
+                chosenEssentiaName === recipe[version.value].part2) &&
+                recipe[version.value].part1 !== recipe[version.value].part2)
+        })
+
+        recipesWhereuse.forEach((r) => {
+            _containers.push(essentiasStore.essentias.value.find((e) => e.name === r.result))
+        })
+        
+        return _containers.length ? _containers : [essentiasStore.backEssentia.value]
+    })
 
     const changeEssentia = (essentia) => {
         chosenEssentia.value = essentia
-        changeContainers(essentia)
-    }
-
-    const changeContainers = (essentia) => {
-        containers.value = []
-        
-        const recipesWhereuse = recipes.filter((recipe) => (recipe.part1 === essentia.name || 
-        recipe.part2 === essentia.name) && 
-        recipe.part2 != recipe.part1)
-        
-        recipesWhereuse.forEach((recipe) => {
-            containers.value.push(essentias.find((essentia) => essentia.name === recipe.result))
-        })
     }
 </script>
 
