@@ -7,24 +7,24 @@ export type ThaumcraftVersion = 'v4' | 'v6'
  * Essence type
  */
 export interface IEssence {
-    name: string;
-    version: ThaumcraftVersion[];
-    image: string;
+    readonly name: string;
+    readonly image: string;
+    readonly version: ReadonlyArray<ThaumcraftVersion>;
 }
 
 /**
  * Essence recipe for cocrete thaumcraft version
  */
 interface IThaumcraftVersionRecipe {
-    firstEssence: string;
-    secondEssence: string;
+    readonly firstEssence: string;
+    readonly secondEssence: string;
 }
 
 /**
  * Recipe type
  */
 export type EssenceRecipe = {
-    [key in Partial<ThaumcraftVersion>]?: IThaumcraftVersionRecipe;
+    readonly [key in Partial<ThaumcraftVersion>]?: IThaumcraftVersionRecipe;
 } & {
-    result: string;
+    readonly result: string;
 }
