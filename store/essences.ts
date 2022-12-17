@@ -1,7 +1,7 @@
 import { defineStore } from "pinia"
 import { EssenceName, IEssence } from '@types'
 
-export const useEssentiasStore = defineStore('essentias', () => {
+export const useEssencesStore = defineStore('essences', () => {
     /**
      * Array of essences with their versions
      */
@@ -256,7 +256,7 @@ export const useEssentiasStore = defineStore('essentias', () => {
             version: ["v4", "v6"],
             image: "/images/essentia/volatus.svg"
         }
-    ] as const)
+    ])
 
     /**
      * Map for get essence by name

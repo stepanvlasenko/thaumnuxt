@@ -9,12 +9,12 @@
             <img :src="chosenEssentia.image">
             <img src="/images/arrow.svg">
             <img class="pointer"
-                @click="changeEssentia(part1Essentia)"
-                :src="part1Essentia.image">
+                @click="changeEssentia(firstEssenceEssentia)"
+                :src="firstEssenceEssentia.image">
             <img src="/images/plus.svg">
             <img class="pointer"
-                @click="changeEssentia(part2Essentia)"
-                :src="part2Essentia.image">
+                @click="changeEssentia(secondEssenceEssentia)"
+                :src="secondEssenceEssentia.image">
         </div>
         <EssentiasList
         :essentias="essentias"
@@ -26,18 +26,18 @@
 <script setup>
     import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
-    import { useEssentiasStore } from '~~/store/essentias';
+    import { useEssencesStore } from '~~/store/essences';
 
-    const essentiasStore = storeToRefs(useEssentiasStore())
+    const essenceStore = storeToRefs(useEssencesStore())
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essences.value
+    const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value)))
 
-    const chosenEssentia = ref(essentiasStore.backEssentia.value)
-    const part1Essentia = ref(essentiasStore.backEssentia.value)
-    const part2Essentia = ref(essentiasStore.backEssentia.value)
+    const chosenEssentia = ref(essenceStore.backEssentia.value)
+    const firstEssenceEssentia = ref(essenceStore.backEssentia.value)
+    const secondEssenceEssentia = ref(essenceStore.backEssentia.value)
 
     const changeEssentia = (essentia) => {
         chosenEssentia.value = essentia
@@ -47,8 +47,8 @@
         const recipe = recipesStore.recipes.value.find((recipe) => recipe.result === essentia.name)[version.value]
             || recipesStore.backRecipe.value
 
-        part1Essentia.value = essentias.value.find((essentia) => recipe.part1 === essentia.name)
-        part2Essentia.value = essentias.value.find((essentia) => recipe.part2 === essentia.name)
+        firstEssenceEssentia.value = essentias.value.find((essentia) => recipe.firstEssence === essentia.name)
+        secondEssenceEssentia.value = essentias.value.find((essentia) => recipe.secondEssence === essentia.name)
     }
 </script>
 

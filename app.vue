@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { useEssencesStore } from '@/store/essences'
+import { useRecipesStore } from '@/store/recipes'
+
+useEssencesStore()
+useRecipesStore()
+</script>
+
 <template>
     <div class="page-centered">
         <Header></Header>

@@ -34,19 +34,19 @@
 <script setup>
     import { storeToRefs } from 'pinia'
     import { useRecipesStore } from '~~/store/recipes';
-    import { useEssentiasStore } from '~~/store/essentias';
+    import { useEssencesStore } from '~~/store/essences';
 
-    const essentiasStore = storeToRefs(useEssentiasStore())
+    const essenceStore = storeToRefs(useEssencesStore())
     const recipesStore = storeToRefs(useRecipesStore())
     const version = computed(() => useRoute().params.version)
 
-    const essentias = ref(essentiasStore.essences.value
+    const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value))
     )
 
-    const firstEssentia = ref(essentiasStore.backEssentia.value)
-    const secondEssentia = ref(essentiasStore.backEssentia.value)
-    const resultEssentia = ref(essentiasStore.backEssentia.value)
+    const firstEssentia = ref(essenceStore.backEssentia.value)
+    const secondEssentia = ref(essenceStore.backEssentia.value)
+    const resultEssentia = ref(essenceStore.backEssentia.value)
 
     const changeFirstEssentia = (essentia) => {
         firstEssentia.value = essentia
@@ -57,12 +57,12 @@
         additionEssentia(firstEssentia.value, secondEssentia.value)
     }
 
-    const additionEssentia = (part1, part2) => {
+    const additionEssentia = (firstEssence, secondEssence) => {
         const recipe = recipesStore.recipes.value.find((recipe) => {
             if (!Object.keys(recipe).includes(version.value)) { return }
 
-            return (recipe[version.value].part1 === part1.name && recipe[version.value].part2 === part2.name) ||
-            (recipe[version.value].part1 === part2.name && recipe[version.value].part2 === part1.name)
+            return (recipe[version.value].firstEssence === firstEssence.name && recipe[version.value].secondEssence === secondEssence.name) ||
+            (recipe[version.value].firstEssence === secondEssence.name && recipe[version.value].secondEssence === firstEssence.name)
         }) || recipesStore.backRecipe.value
 
         resultEssentia.value = essentias.value.find((essentia) => essentia.name === recipe.result)
