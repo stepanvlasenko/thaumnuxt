@@ -6,17 +6,17 @@
             <div class="header__item" ref="version4">
                 <p class="verlink">Thaumcraft 4</p>
                 <div class="nav tc4nav" v-if="Tc4NavStatus">
-                    <NuxtLink class="nav__link" to="/tc4/addition">Сложение эссенций</NuxtLink>
-                    <NuxtLink class="nav__link" to="/tc4/decay">Распад эссенций</NuxtLink>
-                    <NuxtLink class="nav__link" to="/tc4/whereuse">Где эссенция использутся</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v4/addition">Сложение эссенций</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v4/decay">Распад эссенций</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v4/whereuse">Где эссенция использутся</NuxtLink>
                 </div>
             </div>
             <div class="header__item" ref="version6">
                 <p class="verlink">Thaumcraft 6</p>
                 <div class="nav tc6nav" v-if="Tc6NavStatus">
-                    <NuxtLink class="nav__link" to="/tc6/addition">Сложение эссенций</NuxtLink>
-                    <NuxtLink class="nav__link" to="/tc6/decay">Распад эссенций</NuxtLink>
-                    <NuxtLink class="nav__link" to="/tc6/whereuse">Где эссенция использутся</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v6/addition">Сложение эссенций</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v6/decay">Распад эссенций</NuxtLink>
+                    <NuxtLink class="nav__link" to="/v6/whereuse">Где эссенция использутся</NuxtLink>
                 </div>
             </div>
         </div>

@@ -6,7 +6,8 @@ export const useRecipesStore = defineStore('recipes', () => {
         {
             "result": "back",
             "v4": {
-                
+                "part1": "back",
+                "part2": "back"
             },
             "v6": {
                 "part1": "back",
@@ -37,9 +38,6 @@ export const useRecipesStore = defineStore('recipes', () => {
         },
         {
             "result": "alkimia",
-            "v4": {
-                
-            },
             "v6": {
                 "part1": "praecantatio",
                 "part2": "aqua"
@@ -504,7 +502,10 @@ export const useRecipesStore = defineStore('recipes', () => {
             },
         }
     ])
+    const backRecipe = computed(() => recipes.value.find(r => r.result === 'back'))
+
     return {
-        recipes
+        recipes,
+        backRecipe,
     }
 })
