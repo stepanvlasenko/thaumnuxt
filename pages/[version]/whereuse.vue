@@ -33,7 +33,7 @@
     const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value)))
 
-    const chosenEssentia = ref(essenceStore.backEssentia.value)
+    const chosenEssentia = ref(essenceStore.backEssence.value)
 
     const containers = computed(() =>{
         const _containers = []
@@ -51,7 +51,7 @@
             _containers.push(essenceStore.essences.value.find((e) => e.name === r.result))
         })
 
-        return _containers.length ? _containers : [essenceStore.backEssentia.value]
+        return _containers.length ? _containers : [essenceStore.backEssence.value]
     })
 
     const changeEssentia = (essentia) => {

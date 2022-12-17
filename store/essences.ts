@@ -268,10 +268,10 @@ export const useEssencesStore = defineStore('essences', () => {
     /**
      * Back/empty essence
      */
-    const backEssentia = computed(() => essencesMap.value.get('back'))
+    const backEssence = computed<IEssence>(() => essencesMap.value.get('back')!)
 
     return {
-        backEssentia,
+        backEssence,
         essences,
         essencesMap,
     }

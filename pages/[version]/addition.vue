@@ -44,9 +44,9 @@
         .filter((e) => e.version.includes(version.value))
     )
 
-    const firstEssentia = ref(essenceStore.backEssentia.value)
-    const secondEssentia = ref(essenceStore.backEssentia.value)
-    const resultEssentia = ref(essenceStore.backEssentia.value)
+    const firstEssentia = ref(essenceStore.backEssence.value)
+    const secondEssentia = ref(essenceStore.backEssence.value)
+    const resultEssentia = ref(essenceStore.backEssence.value)
 
     const changeFirstEssentia = (essentia) => {
         firstEssentia.value = essentia
@@ -57,12 +57,12 @@
         additionEssentia(firstEssentia.value, secondEssentia.value)
     }
 
-    const additionEssentia = (firstEssence, secondEssence) => {
+    const additionEssentia = (firstEssence, part2) => {
         const recipe = recipesStore.recipes.value.find((recipe) => {
             if (!Object.keys(recipe).includes(version.value)) { return }
 
-            return (recipe[version.value].firstEssence === firstEssence.name && recipe[version.value].secondEssence === secondEssence.name) ||
-            (recipe[version.value].firstEssence === secondEssence.name && recipe[version.value].secondEssence === firstEssence.name)
+            return (recipe[version.value].firstEssence === firstEssence.name && recipe[version.value].part2 === part2.name) ||
+            (recipe[version.value].firstEssence === part2.name && recipe[version.value].part2 === firstEssence.name)
         }) || recipesStore.backRecipe.value
 
         resultEssentia.value = essentias.value.find((essentia) => essentia.name === recipe.result)

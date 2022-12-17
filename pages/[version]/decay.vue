@@ -35,9 +35,9 @@
     const essentias = ref(essenceStore.essences.value
         .filter((e) => e.version.includes(version.value)))
 
-    const chosenEssentia = ref(essenceStore.backEssentia.value)
-    const firstEssenceEssentia = ref(essenceStore.backEssentia.value)
-    const secondEssenceEssentia = ref(essenceStore.backEssentia.value)
+    const chosenEssentia = ref(essenceStore.backEssence.value)
+    const firstEssenceEssentia = ref(essenceStore.backEssence.value)
+    const secondEssenceEssentia = ref(essenceStore.backEssence.value)
 
     const changeEssentia = (essentia) => {
         chosenEssentia.value = essentia
