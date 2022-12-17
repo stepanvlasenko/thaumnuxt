@@ -1,11 +1,11 @@
 import { defineStore } from "pinia"
-import { IEssence } from '@types'
+import { EssenceName, IEssence } from '@types'
 
 export const useEssentiasStore = defineStore('essentias', () => {
     /**
      * Array of essences with their versions
      */
-    const essences = computed<IEssence[]>(() => [
+    const essences = computed<ReadonlyArray<IEssence>>(() => [
         {
             name: "back",
             version: ["v4", "v6"],
@@ -256,17 +256,23 @@ export const useEssentiasStore = defineStore('essentias', () => {
             version: ["v4", "v6"],
             image: "/images/essentia/volatus.svg"
         }
-    ])
+    ] as const)
+
+    /**
+     * Map for get essence by name
+     */
+    const essencesMap = computed<Map<EssenceName, IEssence>>(() => {
+        return new Map(essences.value.map(e => [e.name, e]))
+    })
 
     /**
      * Back/empty essence
      */
-    const backEssentia = computed(() => {
-        return essences.value.find(e => e.name === 'back')
-    })
+    const backEssentia = computed(() => essencesMap.value.get('back'))
 
     return {
-        essences,
         backEssentia,
+        essences,
+        essencesMap,
     }
 })
