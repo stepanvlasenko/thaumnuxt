@@ -17,8 +17,8 @@
                 :src="part2Essentia.src">
         </div>
         <EssentiasList
-        :essentias="essentias"
-        @essentia-click="changeEssentia">
+            :essentias="essentias"
+            @essentia-click="changeEssentia">
     </EssentiasList>
     </div>
 </template>
